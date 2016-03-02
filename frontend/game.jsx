@@ -50,8 +50,8 @@ var Game = React.createClass({
       return board[i] === player;
     }
 
-    var isEmpty = function(el){
-      return el === "empty"
+    var isTaken = function(el){
+      return el !== "empty"
     }
 
     if (
@@ -67,7 +67,7 @@ var Game = React.createClass({
 
       this.setState({currentPlayer: "", message: player + " WINS!"})
 
-    } else if (this.state.board.every(isEmpty) ) {
+    } else if (this.state.board.every(isTaken) ) {
 
       this.setState({currentPlayer: "", message: "CATS GAME!"})
 

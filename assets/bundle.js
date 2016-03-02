@@ -19736,14 +19736,14 @@
 	      return board[i] === player;
 	    };
 	
-	    var isEmpty = function (el) {
-	      return el === "empty";
+	    var isTaken = function (el) {
+	      return el !== "empty";
 	    };
 	
 	    if ([0, 1, 2].every(equalsPlayer) || [3, 4, 5].every(equalsPlayer) || [6, 7, 8].every(equalsPlayer) || [0, 3, 6].every(equalsPlayer) || [1, 4, 7].every(equalsPlayer) || [2, 5, 8].every(equalsPlayer) || [0, 4, 8].every(equalsPlayer) || [2, 4, 6].every(equalsPlayer)) {
 	
 	      this.setState({ currentPlayer: "", message: player + " WINS!" });
-	    } else if (this.state.board.every(isEmpty)) {
+	    } else if (this.state.board.every(isTaken)) {
 	
 	      this.setState({ currentPlayer: "", message: "CATS GAME!" });
 	    }
