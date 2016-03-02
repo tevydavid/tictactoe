@@ -19737,7 +19737,7 @@
 	    };
 	
 	    var isEmpty = function (el) {
-	      return i === "empty";
+	      return el === "empty";
 	    };
 	
 	    if ([0, 1, 2].every(equalsPlayer) || [3, 4, 5].every(equalsPlayer) || [6, 7, 8].every(equalsPlayer) || [0, 3, 6].every(equalsPlayer) || [1, 4, 7].every(equalsPlayer) || [2, 5, 8].every(equalsPlayer) || [0, 4, 8].every(equalsPlayer) || [2, 4, 6].every(equalsPlayer)) {

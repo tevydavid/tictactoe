@@ -51,7 +51,7 @@ var Game = React.createClass({
     }
 
     var isEmpty = function(el){
-      return i === "empty"
+      return el === "empty"
     }
 
     if (
