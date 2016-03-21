@@ -6,25 +6,27 @@ var Game = require('./game'),
 
 var MainComponent = React.createClass({
   getInitialState: function(){
-    return({games: [<Game key='0' />]});
+    return({numGames: 1});
   },
 
   addGame: function(){
-    var games = this.state.games;
-    games.push(<Game key={games.length}/>);
-    this.setState({games: games});
+    this.setState({numGames: this.state.numGames + 1});
   },
 
   render: function () {
+    var games = [];
+    for (var i = 0; i < this.state.numGames; i++) {
+      games.push(<Game key={i}/>);
+    }
+
     return(
       <div>
-        {this.state.games}
+        {games}
         <Footer addGame={this.addGame}/>
       </div>
     );
   }
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  ReactDOM.render(<MainComponent />, document.getElementById('main'));
-});
+
+ReactDOM.render(<MainComponent />, document.getElementById('main'));

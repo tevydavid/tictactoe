@@ -25,12 +25,11 @@ var Game = React.createClass({
     }
   },
 
-  placeMark: function(e){
+  placeMark: function(space){
     if ( this.state.currentPlayer === "" ) {
       return null;
     }
     var board = this.state.board;
-    var space = e.target.getAttribute('data');
     var mark = this.state.currentPlayer;
     try {
       this.validateMove(space)
@@ -54,16 +53,12 @@ var Game = React.createClass({
       return el !== "empty"
     }
 
-    if (
-      [0, 1, 2].every(equalsPlayer)
-      || [3, 4, 5].every(equalsPlayer)
-      || [6, 7, 8].every(equalsPlayer)
-      || [0, 3, 6].every(equalsPlayer)
-      || [1, 4, 7].every(equalsPlayer)
-      || [2, 5, 8].every(equalsPlayer)
-      || [0, 4, 8].every(equalsPlayer)
-      || [2, 4, 6].every(equalsPlayer)
-    ) {
+    var winningCombinations = [[0, 1, 2],[3, 4, 5],[6, 7, 8],[0, 3, 6],[1, 4, 7],[2, 5, 8],[0, 4, 8],[2, 4, 6]]
+    var hasWinner = winningCombinations.some( function(combo){
+      return combo.every(equalsPlayer)
+    });
+
+    if ( hasWinner ) {
 
       this.setState({currentPlayer: "", message: player + " WINS!"})
 
@@ -76,7 +71,11 @@ var Game = React.createClass({
 
   render: function(){
     var tiles = this.state.board.map(function(tile, idx){
-      return <div className={"square " + tile} key={idx} data={idx} onClick={this.placeMark}></div>;
+      return (
+        <div className={"square "} key={idx} onClick={function(){this.placeMark(idx)}.bind(this)}>
+          <div className={"winning-tile tile " + tile} ></div>
+        </div>
+      );
     }.bind(this));
 
     return (
