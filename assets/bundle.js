@@ -19818,8 +19818,8 @@
 	      null,
 	      React.createElement(
 	        "a",
-	        { className: "title", href: "#main" },
-	        "TIC-TAC-TEVY"
+	        { className: "title", href: "http://www.github.com/tevydavid/tictactoe" },
+	        "TIC-TAC-CODE"
 	      ),
 	      React.createElement(
 	        "p",
