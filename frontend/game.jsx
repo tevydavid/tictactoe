@@ -72,8 +72,7 @@ var Game = React.createClass({
   render: function(){
     var tiles = this.state.board.map(function(tile, idx){
       return (
-        <div className={"square "} key={idx} onClick={function(){this.placeMark(idx)}.bind(this)}>
-          <div className={"winning-tile tile " + tile} ></div>
+        <div className={"square " + tile} key={idx} onClick={function(){this.placeMark(idx)}.bind(this)}>
         </div>
       );
     }.bind(this));

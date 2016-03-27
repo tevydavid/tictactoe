@@ -19756,13 +19756,9 @@
 	
 	  render: function () {
 	    var tiles = this.state.board.map(function (tile, idx) {
-	      return React.createElement(
-	        'div',
-	        { className: "square ", key: idx, onClick: function () {
-	            this.placeMark(idx);
-	          }.bind(this) },
-	        React.createElement('div', { className: "winning-tile tile " + tile })
-	      );
+	      return React.createElement('div', { className: "square " + tile, key: idx, onClick: function () {
+	          this.placeMark(idx);
+	        }.bind(this) });
 	    }.bind(this));
 	
 	    return React.createElement(
